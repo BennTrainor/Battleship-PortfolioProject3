@@ -34,7 +34,6 @@ def place_battleships(board):
             battleships_placed += 1
 
 
-
 """
 function to check if game is over
 """
@@ -56,20 +55,21 @@ def play_game():
     board = create_board()
     place_battleships(board)
     print("Its time to play Battleships!!!")
-
-while not is_game_over(board):
     print_board(board)
-    guess_row = int(input("Guess row (0-4): "))
-    guess_column = int(input("Guess column (0-4): "))
+        
+    while not is_game_over(board):
+        guess_row = int(input("Guess row (0-4): "))
+        guess_column = int(input("Guess column (0-4): "))
 
     if board[guess_row][guess_column] == '1':
         print("Well done! You Just sunk a Battleship!")
-        board[guess_row][guess-column] = 'X'
+        board[guess_row][guess_column] = 'X'
     else:
         print("Sorry, you have missed")
-        board[guess_row][guess-column] = 'M'
+        board[guess_row][guess_column] = 'M'
 
-print("Game Over!")
-print_board(board)
+    print("Game Over!")
+    print_board(board)
+    
 
 play_game()
