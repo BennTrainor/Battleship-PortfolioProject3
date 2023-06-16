@@ -34,6 +34,8 @@ def place_battleships(board):
             battleships_placed += 1
 
 
+
+
 board = create_board()
 place_battleships(board)
 print_board(board)
