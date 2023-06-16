@@ -33,9 +33,22 @@ def place_battleships(board):
             board[x][y] = '1'
             battleships_placed += 1
 
+"""
+function to check if game is over
+"""
 
+def is_game_over(board):
+    for row in board:
+        if '1' in row:
+            return False
+        return True
 
+"""
+function to play game
+"""
 
-board = create_board()
-place_battleships(board)
-print_board(board)
+def play_game():
+    board = create_board()
+    place_battleships(board)
+    print("Its time to play Battleships!!!")
+    print_board(board)
