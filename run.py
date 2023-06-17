@@ -53,13 +53,14 @@ function to play game
 
 def play_game():
     player_board = create_board()
+    place_battleships(player_board)
     computer_board = create_board()
     place_battleships(computer_board)
-    
+
     print("Its time to play Battleships!!!")
     print("Player Board")
     print_board(player_board)
-     
+
     while not is_game_over(player_board) and not is_game_over(computer_board):
         """
         Players Turn
@@ -79,25 +80,33 @@ def play_game():
         print("Player Board")
         print_board(player_board)
 
-        if is_game_over(computer_board)
-        break
+        if is_game_over(computer_board):
+            break
+        """
+        Computers Turn
+        """
+        print("Computers Turn")
+        computer_guess_row = random.randint(0, 4)
+        computer_guess_column = random.randint(0, 4)
 
+        if player_board[computer_guess_row][computer_guess_column] == '1':
+            print("The Computer has sunk your Battleship")
+            player_board[computer_guess_row][computer_guess_column] = 'X'
+            computer_board[computer_guess_row][computer_guess_column] = 'X'
+        else:
+            print("The Computer has missed")
+            computer_board[computer_guess_row][computer_guess_column] = 'M'
 
-"""
-Computers Turn
-"""
-print("Computers Turn")
-computer_guess_row = random.randint(0, 4)
-computer_guess_column = random.randint(0, 4)
+        print("Players Board:")
+        print_board(player_board)
 
-if player_board[computer_guess_row][computer_guess_column] == '1':
-    print("The Computer has sunk your Battleship")
-    player_board[computer_guess_row][computer_guess_column] = 'X'
-    computer_board[computer_guess_row][computer_guess_column] = 'X'
-else: 
-    print("The Computer has missed")
-    computer_board[computer_guess_row][computer_guess_column] = 'M'
+    print("Game Over")
+    print_board(player_board)
 
+    if is_game_over(player_board):
+        print("You win the game!")
+    else:
+        print("The Computer won the game")
 
 
 play_game()
