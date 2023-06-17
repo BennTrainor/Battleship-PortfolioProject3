@@ -97,8 +97,6 @@ def play_game():
         """
         print("")
         print("Players Turn")
-        """ guess_row = int(input("Guess row (0-4): "))
-        guess_column = int(input("Guess column (0-4): "))"""
         guess_row = get_valid_coordinate("Guess a row (0-4): ")
         guess_column = get_valid_coordinate("Guess a column (0-4): ")
 
@@ -158,3 +156,12 @@ def play_game():
 
 
 play_game()
+
+while True:
+    print("")
+    print("Thanks for playing!")
+    play_again = input("would you like to play again? (Yes or No): \n")
+    if play_again == "Yes":
+        play_game()
+    else:
+        break
