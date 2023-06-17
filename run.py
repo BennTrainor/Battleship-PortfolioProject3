@@ -43,7 +43,7 @@ def is_game_over(board):
     for row in board:
         if '1' in row:
             return False
-        return True
+    return True
 
 
 """
@@ -56,20 +56,21 @@ def play_game():
     place_battleships(board)
     print("Its time to play Battleships!!!")
     print_board(board)
-        
+     
     while not is_game_over(board):
         guess_row = int(input("Guess row (0-4): "))
         guess_column = int(input("Guess column (0-4): "))
 
-    if board[guess_row][guess_column] == '1':
-        print("Well done! You Just sunk a Battleship!")
-        board[guess_row][guess_column] = 'X'
-    else:
-        print("Sorry, you have missed")
-        board[guess_row][guess_column] = 'M'
+        if board[guess_row][guess_column] == '1':
+            print("Well done! You Just sunk a Battleship!")
+            board[guess_row][guess_column] = 'X'
+        else:
+            print("Sorry, you have missed")
+            board[guess_row][guess_column] = 'M'
 
-    print("Game Over!")
-    print_board(board)
-    
+        print_board(board)
+
+    print("Game Over")
+
 
 play_game()
