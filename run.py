@@ -60,6 +60,9 @@ def play_game():
     print("Its time to play Battleships!!!")
     print("Player Board")
     print_board(player_board)
+    print("")
+    print("Computer Board")
+    print_board(computer_board)
 
     while not is_game_over(player_board) and not is_game_over(computer_board):
         """
@@ -72,13 +75,12 @@ def play_game():
         if computer_board[guess_row][guess_column] == '1':
             print("Well done! You Just sunk a Battleship!")
             computer_board[guess_row][guess_column] = 'X'
-            player_board[guess_row][guess_column] = 'X'
         else:
             print("Sorry, you have missed")
-            player_board[guess_row][guess_column] = 'M'
+            computer_board[guess_row][guess_column] = 'M'
 
-        print("Player Board")
-        print_board(player_board)
+        """print("Players Board:")
+        print_board(player_board)"""
 
         if is_game_over(computer_board):
             break
@@ -92,18 +94,30 @@ def play_game():
         if player_board[computer_guess_row][computer_guess_column] == '1':
             print("The Computer has sunk your Battleship")
             player_board[computer_guess_row][computer_guess_column] = 'X'
-            computer_board[computer_guess_row][computer_guess_column] = 'X'
         else:
             print("The Computer has missed")
-            computer_board[computer_guess_row][computer_guess_column] = 'M'
+            player_board[computer_guess_row][computer_guess_column] = 'M'
 
+        print("")
         print("Players Board:")
+        print("")
         print_board(player_board)
+        print("")
+        print("Computers Board:")
+        print("")
+        print_board(computer_board)
 
     print("Game Over")
+    print("")
+    print("Players Board:")
+    print("")
     print_board(player_board)
+    print("")
+    print("Computers Board:")
+    print("")
+    print_board(computer_board)
 
-    if is_game_over(player_board):
+    if is_game_over(computer_board):
         print("You win the game!")
     else:
         print("The Computer won the game")
