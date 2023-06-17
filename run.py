@@ -58,24 +58,28 @@ def play_game():
     place_battleships(computer_board)
 
     print("Its time to play Battleships!!!")
-    print("Player Board")
+    print("")
+    print("Player Board:")
     print_board(player_board)
     print("")
-    print("Computer Board")
+    print("Computer Board:")
     print_board(computer_board)
 
     while not is_game_over(player_board) and not is_game_over(computer_board):
         """
         Players Turn
         """
+        print("")
         print("Players Turn")
         guess_row = int(input("Guess row (0-4): "))
         guess_column = int(input("Guess column (0-4): "))
 
         if computer_board[guess_row][guess_column] == '1':
+            print("")
             print("Well done! You Just sunk a Battleship!")
             computer_board[guess_row][guess_column] = 'X'
         else:
+            print("")
             print("Sorry, you have missed")
             computer_board[guess_row][guess_column] = 'M'
 
@@ -87,14 +91,17 @@ def play_game():
         """
         Computers Turn
         """
+        print("")
         print("Computers Turn")
         computer_guess_row = random.randint(0, 4)
         computer_guess_column = random.randint(0, 4)
 
         if player_board[computer_guess_row][computer_guess_column] == '1':
+            print("")
             print("The Computer has sunk your Battleship")
             player_board[computer_guess_row][computer_guess_column] = 'X'
         else:
+            print("")
             print("The Computer has missed")
             player_board[computer_guess_row][computer_guess_column] = 'M'
 
@@ -118,8 +125,10 @@ def play_game():
     print_board(computer_board)
 
     if is_game_over(computer_board):
+        print("")
         print("You win the game!")
     else:
+        print("")
         print("The Computer won the game")
 
 
