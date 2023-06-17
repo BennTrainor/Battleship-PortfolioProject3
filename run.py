@@ -77,36 +77,44 @@ def play_game():
         guess_row = int(input("Guess row (0-4): "))
         guess_column = int(input("Guess column (0-4): "))
 
-        if computer_board[guess_row][guess_column] == '1':
-            print("")
-            print("Well done! You Just sunk a Battleship!")
-            computer_board[guess_row][guess_column] = 'X'
+        if (
+            guess_row < 0 or guess_row > 4 or
+            guess_column < 0 or guess_column > 4
+        ):
+            print("Input invalid, please choose value between 0 and 4")
+        elif (
+            computer_board[guess_row][guess_column] != '0' and
+            computer_board[guess_row][guess_column] != 'X'
+        ):
+            print("You have already guessed this coordinate, try again.")
         else:
-            print("")
-            print("Sorry, you have missed")
-            computer_board[guess_row][guess_column] = 'M'
+            if computer_board[guess_row][guess_column] == '1':
+                print("")
+                print("Well done! You Just sunk a Battleship!")
+                computer_board[guess_row][guess_column] = 'X'
+            else:
+                print("")
+                print("Sorry, you have missed")
+                computer_board[guess_row][guess_column] = 'M'
 
-        """print("Players Board:")
-        print_board(player_board)"""
-
-        if is_game_over(computer_board):
-            break
-        """
-        Computers Turn
-        """
-        print("")
-        print("Computers Turn")
-        computer_guess_row = random.randint(0, 4)
-        computer_guess_column = random.randint(0, 4)
-
-        if player_board[computer_guess_row][computer_guess_column] == '1':
+            if is_game_over(computer_board):
+                break
+            """
+            Computers Turn
+            """
             print("")
-            print("The Computer has sunk your Battleship")
-            player_board[computer_guess_row][computer_guess_column] = 'X'
-        else:
-            print("")
-            print("The Computer has missed")
-            player_board[computer_guess_row][computer_guess_column] = 'M'
+            print("Computers Turn")
+            computer_guess_row = random.randint(0, 4)
+            computer_guess_column = random.randint(0, 4)
+
+            if player_board[computer_guess_row][computer_guess_column] == '1':
+                print("")
+                print("The Computer has sunk your Battleship")
+                player_board[computer_guess_row][computer_guess_column] = 'X'
+            else:
+                print("")
+                print("The Computer has missed")
+                player_board[computer_guess_row][computer_guess_column] = 'M'
 
         print("")
         print("Players Board:")
