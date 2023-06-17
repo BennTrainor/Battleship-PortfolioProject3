@@ -14,9 +14,12 @@ function to print gameboard
 """
 
 
-def print_board(board):
+def print_board(board, hide_battleships=False):
     for row in board:
-        print(' '.join(row))
+        if hide_battleships:
+            print(' '.join(['0' if cell == '1' else cell for cell in row]))
+        else:
+            print(' '.join(row))
 
 
 """
@@ -63,7 +66,7 @@ def play_game():
     print_board(player_board)
     print("")
     print("Computer Board:")
-    print_board(computer_board)
+    print_board(computer_board, hide_battleships=True)
 
     while not is_game_over(player_board) and not is_game_over(computer_board):
         """
@@ -112,7 +115,7 @@ def play_game():
         print("")
         print("Computers Board:")
         print("")
-        print_board(computer_board)
+        print_board(computer_board, hide_battleships=True)
 
     print("Game Over")
     print("")
